@@ -1,9 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import Home from "./Home";
 const Main = () => {
   return (
     <Container>
-      <h1>Main page</h1>
+      <Home />
     </Container>
   );
 };
