@@ -9,7 +9,7 @@ const Layout = () => {
       <header>
         <Header />
       </header>
-      <main>
+      <main className="py-5">
         <Outlet />
       </main>
       <footer>
