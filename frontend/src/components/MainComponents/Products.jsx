@@ -10,7 +10,10 @@ const Products = ({ product }) => {
         <Card.Img src={product.image} />
       </NavLink>
       <Card.Body>
-        <NavLink to={`/product/${product._id}`}>
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to={`/product/${product._id}`}
+        >
           <Card.Title as="div">
             <strong>{product.name}</strong>
           </Card.Title>

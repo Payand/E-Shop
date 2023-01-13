@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import productsApi from "../../productsApi";
+
 import Rating from "../RatingComponents/Rating";
+import axios from "axios";
 
 const Product = () => {
+  const [product, setProduct] = useState({});
   const params = useParams();
-  const product = productsApi.find((p) => p._id === params.id);
+  // const product = productsApi.find((p) => p._id === params.id);
+  const fetchProduct = async () => {
+    const { data } = await axios.get(
+      `http://127.0.0.1:8000/api/products/${params.id}`
+    );
+    setProduct(data);
+  };
+  useEffect(() => {
+    fetchProduct();
+  }, [params]);
+
   return (
     <div className="px-5">
       <NavLink to="/" className="btn btn-light my-3">
@@ -35,7 +47,7 @@ const Product = () => {
             <ListGroup.Item>Description : {product.description}</ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col>
+        <Col md={3}>
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
@@ -62,7 +74,7 @@ const Product = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button
-                  className="btn-block mx-4"
+                  className="btn-block"
                   disabled={product.countInStock === 0}
                 >
                   Add to cart
