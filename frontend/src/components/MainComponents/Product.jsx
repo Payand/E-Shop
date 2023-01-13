@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
 import Rating from "../RatingComponents/Rating";
 import axios from "axios";
 
 const Product = () => {
   const [product, setProduct] = useState({});
   const params = useParams();
-  // const product = productsApi.find((p) => p._id === params.id);
+
   const fetchProduct = async () => {
-    const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/products/${params.id}`
-    );
+    const { data } = await axios.get(`/api/products/${params.id}`);
     setProduct(data);
   };
   useEffect(() => {

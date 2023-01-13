@@ -6,13 +6,13 @@ import Rating from "../RatingComponents/Rating";
 const Products = ({ product }) => {
   return (
     <Card className="my-3 p-3 rounded">
-      <NavLink to={`/product/${product._id}`}>
+      <NavLink to={`/product/${product.id}`}>
         <Card.Img src={product.image} />
       </NavLink>
       <Card.Body>
         <NavLink
           style={{ textDecoration: "none" }}
-          to={`/product/${product._id}`}
+          to={`/product/${product.id}`}
         >
           <Card.Title as="div">
             <strong>{product.name}</strong>
